@@ -1,0 +1,32 @@
+<div class="content" role="main">
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+        <span>{{ title }}</span>
+    </div>
+    <div class="container">
+        <!-- Nutrition Analysis Form Start -->
+        <form (ngSubmit)="onSubmit()" #analysisForm="ngForm">
+            <div class="form-group">
+                <label for="iTitle">Ingredient Name*</label>
+                <input type="text" class="form-control" id="iTitle" required [(ngModel)]="model.iTitle" name="iTitle"
+                    #iTitle="ngModel">
+                <div [hidden]="iTitle.valid || iTitle.pristine" class="alert alert-danger">
+                    Ingredient Name is required
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="iSummary">Ingredient Summary*</label>
+                <textarea class="form-control" id="iSummary" required [(ngModel)]="model.iSummary" name="iSummary"
+                    #iSummary="ngModel" rows="20"></textarea>
+                <i>Disclaimer: Each line should contain food name, quantity and unit.</i>
+                <div [hidden]="iSummary.valid || iSummary.pristine" class="alert alert-danger">
+                    Ingredient Summary is required
+                </div>
+            </div>
+            <div class="center">
+                <button type="submit" class="btn btn-success" [disabled]="!analysisForm.form.valid">Analyse</button>
+            </div>
+        </form>
+        <!-- / Nutrition Analysis Form End -->
+    </div>
+</div>

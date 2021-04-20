@@ -1,0 +1,49 @@
+<div class="content" role="main">
+    <!-- Highlight Card -->
+    <div class="card highlight-card card-small">
+        <span>{{ title }}</span>
+    </div>
+    <div class="container">
+        <h3 *ngIf="iTitle">{{iTitle}}</h3>
+        <!-- Summary Breakdown start -->
+        <table class="table">
+            <tbody>
+                <tr>
+                    <th>S. No. </th>
+                    <th>Ingredient </th>
+                    <th>Calories </th>
+                    <th>Weight</th>
+                </tr>
+                <tr *ngFor="let item of ingredientsFinal;let i = index;">
+                    <td> <code>{{i+1}}</code> </td>
+                    <td> {{item.title}} </td>
+                    <td> {{item.calories  | number : '1.2-2'}} </td>
+                    <td> {{item.weight  | number : '1.2-2'}} </td>
+                </tr>
+            </tbody>
+        </table>
+        <!-- / Summary Breakdown end -->
+        <div class="center">
+            <button type="button" class="btn btn-success" (click)="totalNutrition()">Total Nutrition</button>
+        </div>
+
+        <!-- Daily Nutrition start -->
+        <div *ngIf="active">
+            <table class="table">
+                <tbody>
+                    <tr>
+                        <th class="left">S. No. </th>
+                        <th class="left">Label</th>
+                        <th class="right">Quantity</th>
+                    </tr>
+                    <tr *ngFor="let item of dailyNutrition.totalDaily | keyvalue;let i = index;">
+                        <td> <code>{{i+1}}</code> </td>
+                        <td>{{item.value.label}}</td>
+                        <td class="right">{{item.value.quantity  | number : '1.2-2'}} {{item.value.unit}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- / Daily Nutrition end -->
+    </div>
+</div>
