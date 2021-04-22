@@ -17,6 +17,7 @@ export class SummaryComponent implements OnInit {
   dailyNutrition: any = [];
   body: any;
   active: boolean = false;
+  showAlert: boolean = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private nutritionAPI: NutritionApiService) {
     this.route.params.subscribe(async params => {
@@ -60,8 +61,11 @@ export class SummaryComponent implements OnInit {
     this.nutritionAPI.getNutritionDetails(this.body).subscribe((response: any) => {
       this.dailyNutrition = response;
       this.active = true;
+      this.showAlert = false;
     }, error => {
+      console.log(error);
       this.active = false;
+      this.showAlert = true;
     }) 
   }
 }
