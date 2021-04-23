@@ -14,7 +14,7 @@
                     <th>Calories </th>
                     <th>Weight</th>
                 </tr>
-                <tr *ngFor="let item of ingredientsFinal;let i = index;">
+                <tr *ngFor="let item of ingredientsFinal;let i = index;" class="ingr">
                     <td> <code>{{i+1}}</code> </td>
                     <td> {{item.title}} </td>
                     <td> {{item.calories  | number : '1.2-2'}} </td>

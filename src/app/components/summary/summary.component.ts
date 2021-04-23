@@ -21,7 +21,7 @@ export class SummaryComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private router: Router, private nutritionAPI: NutritionApiService) {
     this.route.params.subscribe(async params => {
-      this.extraState = this.router.getCurrentNavigation().extras.state; // get the state value 
+      this.extraState = this.router.getCurrentNavigation()?.extras.state; // get the state value 
       this.body = this.extraState?.body;
 
       // if state value exist
